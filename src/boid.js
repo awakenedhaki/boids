@@ -56,7 +56,7 @@ class Boid {
     const aggregatedPositions = neighboursWithinCollisionRange.reduce(
       (acc, boid) => {
         const difference = p5.Vector.sub(this.position, boid.position);
-        acc.add(difference);
+        return p5.Vector.add(acc, difference);
       },
       createVector(0, 0)
     );
@@ -66,7 +66,7 @@ class Boid {
 
   align(neighbours) {
     const aggregatedVelocity = neighbours.reduce((acc, boid) => {
-      acc.add(boid.velocity);
+      return p5.Vector.add(acc, boid.velocity);
     }, createVector(0, 0));
 
     const averageVelocity = p5.Vector.div(
@@ -80,7 +80,7 @@ class Boid {
 
   cohere(neighbours) {
     const aggregatedPositions = neighbours.reduce((acc, boid) => {
-      acc.add(boid.position);
+      return p5.Vector.add(acc, boid.position);
     }, createVector(0, 0));
 
     const averagePosition = p5.Vector.div(
