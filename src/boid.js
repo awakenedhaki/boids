@@ -32,6 +32,13 @@ class Boid {
     });
   }
 
+  // Steering
+  applySteering() {
+    this.acceleration.add(this._separation);
+    this.acceleration.add(this._alignment);
+    this.acceleration.add(this._coherence);
+  }
+
   calculateSteeringForces(neighbours) {
     if (neighbours.length === 0) {
       return;
@@ -39,13 +46,6 @@ class Boid {
     this._separation = this.separate(neighbours);
     this._alignment = this.align(neighbours);
     this._coherence = this.cohere(neighbours);
-  }
-
-  // Steering
-  applySteering() {
-    this.acceleration.add(this._separation);
-    this.acceleration.add(this._alignment);
-    this.acceleration.add(this._coherence);
   }
 
   separate(neighbours) {
