@@ -31,6 +31,12 @@ class Boid {
     });
   }
 
+  calculateSteeringForces(neighbours) {
+    this.separate(neighbours);
+    this.align(neighbours);
+    this.cohere(neighbours);
+  }
+
   // Steering
   applySteering() {
     this.acceleration.add(this._separation);
