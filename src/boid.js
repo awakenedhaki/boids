@@ -36,7 +36,18 @@ class Boid {
 
   separate(neighbours) {}
 
-  align(neighbours) {}
+  align(neighbours) {
+    const aggregatedVelocity = neighbours.reduce((acc, boid) => {
+      acc.add(boid.velocity);
+    }, createVector(0, 0));
+
+    const averageVelocity = p5.Vector.div(
+      aggregatedVelocity,
+      neighbours.length
+    );
+
+    return p5.Vector.sub(averageVelocity, this.velocity);
+  }
 
   cohere(neighbours) {
     const aggregatedPositions = neighbours.reduce((acc, boid) => {
