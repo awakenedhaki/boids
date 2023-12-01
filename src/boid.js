@@ -94,6 +94,7 @@ class Boid {
 
   // Boilerplate
   update() {
+    this.velocity.add(this.acceleration);
     this.position.add(this.velocity);
   }
 
