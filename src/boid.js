@@ -34,7 +34,14 @@ class Boid {
     this.acceleration.add(this._coherece);
   }
 
-  separate(neighbours) {}
+  separate(neighbours) {
+    const aggregatedPositions = neighbours.reduce((acc, boid) => {
+      const difference = p5.Vector.sub(this.position, boid.position);
+      acc.add(difference);
+    }, createVector(0, 0));
+
+    return aggregatedPositions;
+  }
 
   align(neighbours) {
     const aggregatedVelocity = neighbours.reduce((acc, boid) => {
