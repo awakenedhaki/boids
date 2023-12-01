@@ -40,7 +40,7 @@ class Boid {
 
   cohere(neighbours) {
     const aggregatedPositions = neighbours.reduce((acc, boid) => {
-      p5.Vector.add(acc, boid.position);
+      acc.add(boid.position);
     }, createVector(0, 0));
 
     const averagePosition = p5.Vector.div(
