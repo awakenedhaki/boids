@@ -3,11 +3,12 @@ class Boid {
     // Constants
     this.MINT_GREEN = [201, 237, 220, 190];
     this.RADIUS = 10;
-    this.FIELD_OF_VIEW = 100;
-    this.PERSONAL_SPACE = 50;
-    this.SEPARATION_WEIGHT = 1;
-    this.ALIGNMENT_WEIGHT = 1;
-    this.COHERENCE_WEIGHT = 1;
+    this.FIELD_OF_VIEW = 30;
+    this.PERSONAL_SPACE = 10;
+    this.SEPARATION_WEIGHT = 0.002;
+    this.ALIGNMENT_WEIGHT = 0.3;
+    this.COHERENCE_WEIGHT = 0.001;
+    this.MAX_SPEED = 1;
 
     // Behaviours
     this.acceleration = createVector(0, 0);
