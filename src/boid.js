@@ -44,7 +44,7 @@ class Boid {
   applySteering() {
     this.acceleration.add(this._separation);
     this.acceleration.add(this._alignment);
-    this.acceleration.add(this._coherece);
+    this.acceleration.add(this._coherence);
   }
 
   separate(neighbours) {
