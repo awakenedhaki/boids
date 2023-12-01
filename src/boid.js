@@ -15,6 +15,8 @@ class Boid {
     this._coherence = createVector(0, 0);
   }
 
+  findNeighbours(boids) {}
+
   // Steering
   applySteering() {
     this.acceleration.add(this._separation);
