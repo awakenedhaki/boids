@@ -3,6 +3,7 @@ class Boid {
     // Constants
     this.MINT_GREEN = [201, 237, 220, 190];
     this.RADIUS = 10;
+    this.FIELD_OF_VIEW = 100;
 
     // Behaviours
     this.acceleration = createVector(0, 0);
@@ -15,7 +16,12 @@ class Boid {
     this._coherence = createVector(0, 0);
   }
 
-  findNeighbours(boids) {}
+  findNeighbours(boids) {
+    return boids.filter((boid) => {
+      const distance = p5.Vector.dist(this.position, boid.position);
+      return distance < this.FIELDO_OF_VIEW;
+    });
+  }
 
   // Steering
   applySteering() {
