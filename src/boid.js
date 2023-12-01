@@ -38,7 +38,18 @@ class Boid {
 
   align(neighbours) {}
 
-  coehere(neighbours) {}
+  cohere(neighbours) {
+    const aggregatedPositions = neighbours.reduce((acc, boid) => {
+      p5.Vector.add(acc, boid.position);
+    }, createVector(0, 0));
+
+    const averagePosition = p5.Vector.div(
+      aggregatedPositions,
+      neighbours.length
+    );
+
+    return p5.Vector.sub(averagePosition, this.position);
+  }
 
   // Boilerplate
   update() {
