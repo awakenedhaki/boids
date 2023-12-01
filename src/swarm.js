@@ -19,7 +19,7 @@ class Swarm {
       const neighbours = boid.findNeighbours(this.boids);
 
       boid.calculateSteeringForces(neighbours);
-      boid.applyForces();
+      boid.applySteering();
 
       boid.update();
     });
