@@ -32,7 +32,7 @@ class Boid {
   }
 
   calculateSteeringForces(neighbours) {
-    if (neighbours === 0) {
+    if (neighbours.length === 0) {
       return;
     }
     this.separate(neighbours);
