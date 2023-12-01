@@ -21,7 +21,7 @@ class Boid {
     return boids.filter((boid) => {
       if (this != boid) {
         const distance = p5.Vector.dist(this.position, boid.position);
-        return distance < this.FIELDO_OF_VIEW;
+        return distance < this.FIELD_OF_VIEW;
       } else {
         return false;
       }
