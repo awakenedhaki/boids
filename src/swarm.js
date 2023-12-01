@@ -20,9 +20,9 @@ class Swarm {
 
       boid.calculateSteeringForces(neighbours);
       boid.applySteering();
-
-      boid.update();
     });
+
+    this.boids.forEach((boid) => boid.update());
   }
 
   show() {
