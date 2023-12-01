@@ -4,6 +4,7 @@ class Boid {
     this.MINT_GREEN = [201, 237, 220, 190];
     this.RADIUS = 10;
     this.FIELD_OF_VIEW = 100;
+    this.PERSONAL_SPACE = 50;
 
     // Behaviours
     this.acceleration = createVector(0, 0);
@@ -35,10 +36,18 @@ class Boid {
   }
 
   separate(neighbours) {
-    const aggregatedPositions = neighbours.reduce((acc, boid) => {
-      const difference = p5.Vector.sub(this.position, boid.position);
-      acc.add(difference);
-    }, createVector(0, 0));
+    const neighboursWithinCollisionRange = neighbours.filter((boid) => {
+      const distance = p5.Vector.dist(this.position, boid.position);
+      return distance < this.PERSONAL_SPACE;
+    });
+
+    const aggregatedPositions = neighboursWithinCollisionRange.reduce(
+      (acc, boid) => {
+        const difference = p5.Vector.sub(this.position, boid.position);
+        acc.add(difference);
+      },
+      createVector(0, 0)
+    );
 
     return aggregatedPositions;
   }
