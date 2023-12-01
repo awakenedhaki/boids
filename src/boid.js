@@ -5,6 +5,9 @@ class Boid {
     this.RADIUS = 10;
     this.FIELD_OF_VIEW = 100;
     this.PERSONAL_SPACE = 50;
+    this.SEPARATION_WEIGHT = 1;
+    this.ALIGNMENT_WEIGHT = 1;
+    this.COHERENCE_WEIGHT = 1;
 
     // Behaviours
     this.acceleration = createVector(0, 0);
@@ -49,7 +52,7 @@ class Boid {
       createVector(0, 0)
     );
 
-    return aggregatedPositions;
+    return p5.Vector.mult(aggregatedPositions, this.SEPARATION_WEIGHT);
   }
 
   align(neighbours) {
@@ -62,7 +65,8 @@ class Boid {
       neighbours.length
     );
 
-    return p5.Vector.sub(averageVelocity, this.velocity);
+    const steering = p5.Vector.sub(averageVelocity, this.velocity);
+    return p5.Vector.mult(steering, this.ALIGNMENT_WEIGHT);
   }
 
   cohere(neighbours) {
@@ -75,7 +79,8 @@ class Boid {
       neighbours.length
     );
 
-    return p5.Vector.sub(averagePosition, this.position);
+    const steering = p5.Vector.sub(averagePosition, this.position);
+    return p5.Vector.mult(steering, this.COHERENCE_WEIGHT);
   }
 
   // Boilerplate
