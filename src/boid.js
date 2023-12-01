@@ -35,9 +35,9 @@ class Boid {
     if (neighbours.length === 0) {
       return;
     }
-    this.separate(neighbours);
-    this.align(neighbours);
-    this.cohere(neighbours);
+    this._separation = this.separate(neighbours);
+    this._alignment = this.align(neighbours);
+    this._coherence = this.cohere(neighbours);
   }
 
   // Steering
