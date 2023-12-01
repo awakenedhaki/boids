@@ -93,10 +93,28 @@ class Boid {
     return p5.Vector.mult(steering, this.COHERENCE_WEIGHT);
   }
 
+  // Boundary detection
+  avoidBoundary() {
+    if (this.x <= 0) {
+      this.velocity.x = 0.2;
+    } else if (this.x >= width) {
+      this.velocity.x = -0.2;
+    }
+
+    if (this.y <= 0) {
+      this.velocity.y = 0.2;
+    } else if (this.y >= height) {
+      this.velocity.y = -0.2;
+    }
+  }
+
   // Boilerplate
   update() {
     this.velocity.add(this.acceleration);
+    this.velocity.limit(this.MAX_SPEED);
     this.position.add(this.velocity);
+
+    this.avoidBoundary();
   }
 
   show() {
