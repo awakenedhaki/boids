@@ -18,8 +18,12 @@ class Boid {
 
   findNeighbours(boids) {
     return boids.filter((boid) => {
-      const distance = p5.Vector.dist(this.position, boid.position);
-      return distance < this.FIELDO_OF_VIEW;
+      if (this != boid) {
+        const distance = p5.Vector.dist(this.position, boid.position);
+        return distance < this.FIELDO_OF_VIEW;
+      } else {
+        return false;
+      }
     });
   }
 
