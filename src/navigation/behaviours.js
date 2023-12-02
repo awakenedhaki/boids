@@ -13,11 +13,11 @@ function alignment(boid, flock) {
 }
 
 function separation(boid, flock) {
-  if (flock.length === 0) {
+  const immenentNeighbours = findNeighbours(boid, flock, boid.AVOIDACNE_RADIUS);
+  if (immenentNeighbours.length === 0) {
     return createVector(0, 0);
   }
 
-  const immenentNeighbours = findNeighbours(boid, flock, boid.AVOIDACNE_RADIUS);
   const collisionAvoidanceSteering = immenentNeighbours.reduce(
     (acc, agent) => acc.add(p5.Vector(boid.position, agent.position)),
     createVector(0, 0)
