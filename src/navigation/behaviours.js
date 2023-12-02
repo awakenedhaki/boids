@@ -1,4 +1,4 @@
-function alignment(flock) {
+function alignment(boid, flock) {
   if (flock.length === 0) {
     return createVector(0, 0);
   }
