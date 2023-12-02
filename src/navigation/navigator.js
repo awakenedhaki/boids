@@ -1,7 +1,7 @@
 class Navigator {
-  constructor() {
-    this.behaviours = [];
-    this.weights = [];
+  constructor(behaviours, weights) {
+    this.behaviours = behaviours || [];
+    this.weights = weights || [];
   }
 
   calculateSteering(boid, flock) {
