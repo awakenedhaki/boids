@@ -2,7 +2,7 @@
  * Represents a flock of boids in the simulation.
  * @class Flock
  */
-class Flock {
+class BoidManager {
   /**
    * Constructs a new Flock.
    * @param {Boid[]} boids - An array containing all the boids in the flock.
@@ -17,7 +17,7 @@ class Flock {
    * Initializes a flock with a specified number of boids and a navigator.
    * @param {number} n - The number of boids to create in the flock.
    * @param {Navigator} navigator - The navigator object for steering behavior calculations.
-   * @returns {Flock} - The initialized flock.
+   * @returns {BoidManager} - The initialized flock.
    */
   static initialize(n, navigator) {
     const boids = [];
@@ -26,7 +26,7 @@ class Flock {
       const y = random(height);
       boids.push(new Boid(x, y));
     }
-    return new Flock(boids, navigator);
+    return new BoidManager(boids, navigator);
   }
 
   /**

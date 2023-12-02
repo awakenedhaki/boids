@@ -1,5 +1,5 @@
 // Declaring Global Variables ==================================================
-let flock;
+let boidManager;
 
 // p5js Boilerplate ============================================================
 function setup() {
@@ -8,7 +8,7 @@ function setup() {
     [alignment, separation, coherence],
     [1, 1, 1]
   );
-  flock = Flock.initialize(400, navigator);
+  boidManager = BoidManager.initialize(400, navigator);
 }
 
 function draw() {
