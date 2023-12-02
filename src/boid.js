@@ -13,7 +13,7 @@ class Boid {
     this.MINT_GREEN = [201, 237, 220, 190];
     this.RADIUS = 10;
     this.FIELD_OF_VIEW = 50;
-    this.AVOIDANCE_RADIUS = 10;
+    this.AVOIDANCE_RADIUS_WEIGHT = 3;
     this.MAX_SPEED = 1;
 
     // Behaviours
@@ -65,5 +65,9 @@ class Boid {
    */
   get y() {
     return this.position.y;
+  }
+
+  get AVOIDANCE_RADIUS() {
+    return this.RADIUS * this.AVOIDANCE_RADIUS_WEIGHT;
   }
 }
