@@ -46,7 +46,6 @@ class Boid {
     });
   }
 
-  // Steering
   /**
    * Calculates steering forces based on neighboring boids.
    * @param {Boid[]} neighbours - An array of neighboring boids.
@@ -132,7 +131,6 @@ class Boid {
     return p5.Vector.mult(steering, this.COHERENCE_WEIGHT);
   }
 
-  // Boundary detection
   /**
    * Checks for boundaries and adjusts boid's velocity if it reaches them.
    * @returns {void}
@@ -151,7 +149,6 @@ class Boid {
     }
   }
 
-  // Boilerplate
   /**
    * Updates the boid's position, velocity, and checks for boundary avoidance.
    * @returns {void}
