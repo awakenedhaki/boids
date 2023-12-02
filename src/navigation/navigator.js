@@ -5,7 +5,7 @@ class Navigator {
   }
 
   calculateSteering(boid, flock) {
-    const neighbours = findNeighbours(boid, flock);
+    const neighbours = findNeighbours(boid, flock.boids, boid.FIELD_OF_VIEW);
 
     let steering = createVector(0, 0);
     for (let i = 0; i < this.behaviours.length; i++) {
