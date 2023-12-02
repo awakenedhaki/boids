@@ -1,5 +1,5 @@
 // Declaring Global Variables ==================================================
-let swarm;
+let flock;
 
 // p5js Boilerplate ============================================================
 function setup() {
@@ -9,8 +9,8 @@ function setup() {
 
 function draw() {
   background(0);
-  swarm.update();
-  swarm.show();
+  flock.update();
+  flock.show();
 }
 
 function keyPressed() {

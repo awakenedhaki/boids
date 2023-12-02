@@ -1,4 +1,4 @@
-class Swarm {
+class Flock {
   constructor(boids) {
     this.boids = boids;
   }
