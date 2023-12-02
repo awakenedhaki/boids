@@ -1,17 +1,17 @@
 class Flock {
-  constructor(boids, behaviour) {
+  constructor(boids, navigator) {
     this.boids = boids;
-    this.behaviour = behaviour;
+    this.navigator = navigator;
   }
 
-  static initialize(n) {
+  static initialize(n, navigator) {
     const boids = [];
     for (let i = 0; i < n; i++) {
       const x = random(width);
       const y = random(height);
       boids.push(new Boid(x, y));
     }
-    return new Flock(boids);
+    return new Flock(boids, navigator);
   }
 
   update() {
