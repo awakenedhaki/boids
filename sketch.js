@@ -4,7 +4,7 @@ let flock;
 // p5js Boilerplate ============================================================
 function setup() {
   createCanvas(1000, 500);
-  swarm = Swarm.initialize(400);
+  flock = Flock.initialize(400);
 }
 
 function draw() {
