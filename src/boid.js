@@ -38,8 +38,6 @@ class Boid {
     this.velocity.add(this.acceleration);
     this.velocity.limit(this.MAX_SPEED);
     this.position.add(this.velocity);
-
-    this.avoidBoundary();
   }
 
   /**
