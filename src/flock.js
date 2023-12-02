@@ -16,7 +16,7 @@ class Flock {
 
   update() {
     this.boids.forEach((boid) => {
-      const steering = this.behaviour.calculateSteering(boid, this);
+      const steering = this.navigator.calculateSteering(boid, this);
       boid.applySteering(steering);
 
       boid.update();
