@@ -12,7 +12,7 @@ class Boid {
     // Constants
     this.MINT_GREEN = [201, 237, 220, 190];
     this.RADIUS = 10;
-    this.FIELD_OF_VIEW = 50;
+    this.FIELD_OF_VIEW = 75;
     this.AVOIDANCE_RADIUS_WEIGHT = 3;
     this.MAX_SPEED = 1;
 
