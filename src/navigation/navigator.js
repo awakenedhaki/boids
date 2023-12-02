@@ -9,11 +9,15 @@ class Navigator {
 
     let steering = createVector(0, 0);
     for (let i = 0; i < this.behaviours.length; i++) {
-      const desiredMovement = p5.Vector.mult(
-        p5.Vector.normalize(this.behaviour[i](boid, neighbours)),
+      const desiredMovement = this.behaviours[i](boid, neighbours);
+      desiredMovement.normalize();
+
+      const weightedDesiredMovement = p5.Vector.mult(
+        desiredMovement,
         this.weights[i]
       );
-      steering.add(desiredMovement);
+
+      steering.add(weightedDesiredMovement);
     }
 
     return steering;
