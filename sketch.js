@@ -8,7 +8,7 @@ function setup() {
     [alignment, separation, coherence],
     [1, 1, 1]
   );
-  flock = Flock.initialize(400);
+  flock = Flock.initialize(400, navigator);
 }
 
 function draw() {
