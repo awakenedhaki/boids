@@ -38,6 +38,7 @@ function coherence(boid, flock) {
   );
 
   cohesionSteering.div(flock.length);
+  cohesionSteering.sub(boid.position);
   return cohesionSteering;
 }
 
