@@ -1,6 +1,7 @@
 class Flock {
-  constructor(boids) {
+  constructor(boids, behaviour) {
     this.boids = boids;
+    this.behaviour = behaviour;
   }
 
   static initialize(n) {
@@ -10,19 +11,16 @@ class Flock {
       const y = random(height);
       boids.push(new Boid(x, y));
     }
-    return new Swarm(boids);
+    return new Flock(boids);
   }
 
-  // Boilerplate
   update() {
     this.boids.forEach((boid) => {
-      const neighbours = boid.findNeighbours(this.boids);
+      const steering = behaviour.calculateSteering(boid, this);
+      boid.applySteering(steering);
 
-      boid.calculateSteeringForces(neighbours);
-      boid.applySteering();
+      boid.update();
     });
-
-    this.boids.forEach((boid) => boid.update());
   }
 
   show() {
