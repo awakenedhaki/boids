@@ -13,8 +13,8 @@ function setup() {
 
 function draw() {
   background(0);
-  flock.update();
-  flock.show();
+  boidManager.update();
+  boidManager.show();
 }
 
 function keyPressed() {
