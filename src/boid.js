@@ -19,11 +19,10 @@ class Boid {
     this.acceleration = createVector(0, 0);
     this.velocity = p5.Vector.random2D();
     this.position = createVector(x, y);
+  }
 
-    // Steering
-    this._separation = createVector(0, 0);
-    this._alignment = createVector(0, 0);
-    this._coherence = createVector(0, 0);
+  applySteering(steering) {
+    this.acceleration.add(steering);
   }
 
   /**
