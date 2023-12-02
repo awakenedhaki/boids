@@ -22,6 +22,11 @@ class Boid {
     this.position = createVector(x, y);
   }
 
+  /**
+   * Applies a steering force to the boid.
+   * @param {p5.Vector} steering - The steering force to apply.
+   * @returns {void}
+   */
   applySteering(steering) {
     this.acceleration.add(steering);
   }
