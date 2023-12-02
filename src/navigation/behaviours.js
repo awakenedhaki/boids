@@ -19,7 +19,7 @@ function separation(boid, flock) {
   }
 
   const collisionAvoidanceSteering = immenentNeighbours.reduce(
-    (acc, agent) => acc.add(p5.Vector(boid.position, agent.position)),
+    (acc, agent) => acc.add(p5.Vector.sub(boid.position, agent.position)),
     createVector(0, 0)
   );
 
