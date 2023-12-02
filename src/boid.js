@@ -13,10 +13,10 @@ class Boid {
     this.MINT_GREEN = [201, 237, 220, 190];
     this.RADIUS = 10;
     this.FIELD_OF_VIEW = 30;
-    this.PERSONAL_SPACE = 10;
-    this.SEPARATION_WEIGHT = 0.005;
-    this.ALIGNMENT_WEIGHT = 0.5;
-    this.COHERENCE_WEIGHT = 0.001;
+    this.AVOIDANCE_RADIUS = 10;
+    this.SEPARATION_WEIGHT = 1;
+    this.ALIGNMENT_WEIGHT = 1;
+    this.COHERENCE_WEIGHT = 1;
     this.MAX_SPEED = 1;
 
     // Behaviours
