@@ -14,6 +14,7 @@ class Boid {
     this.RADIUS = 10;
     this.FIELD_OF_VIEW = 50;
     this.AVOIDANCE_RADIUS = 10;
+    this.MAX_SPEED = 1;
 
     // Behaviours
     this.acceleration = createVector(0, 0);
