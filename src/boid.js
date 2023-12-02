@@ -1,4 +1,13 @@
+/**
+ * Represents a boid in the flock simulation.
+ * @class Boid
+ */
 class Boid {
+  /**
+   * Constructs a new Boid.
+   * @param {number} x - The x-coordinate of the boid's initial position.
+   * @param {number} y - The y-coordinate of the boid's initial position.
+   */
   constructor(x, y) {
     // Constants
     this.MINT_GREEN = [201, 237, 220, 190];
@@ -21,6 +30,11 @@ class Boid {
     this._coherence = createVector(0, 0);
   }
 
+  /**
+   * Finds neighboring boids within the field of view.
+   * @param {Boid[]} boids - An array of boids to check for neighbors.
+   * @returns {Boid[]} - An array of neighboring boids.
+   */
   findNeighbours(boids) {
     return boids.filter((boid) => {
       if (this != boid) {
@@ -33,12 +47,22 @@ class Boid {
   }
 
   // Steering
+  /**
+   * Calculates steering forces based on neighboring boids.
+   * @param {Boid[]} neighbours - An array of neighboring boids.
+   * @returns {void}
+   */
   applySteering() {
     this.acceleration.add(this._separation);
     this.acceleration.add(this._alignment);
     this.acceleration.add(this._coherence);
   }
 
+  /**
+   * Separates the boid from its neighbors to avoid collisions.
+   * @param {Boid[]} neighbours - An array of neighboring boids.
+   * @returns {p5.Vector} - A separation vector to avoid collisions.
+   */
   calculateSteeringForces(neighbours) {
     if (neighbours.length === 0) {
       return;
@@ -48,6 +72,11 @@ class Boid {
     this._coherence = this.cohere(neighbours);
   }
 
+  /**
+   * Separates the boid from its neighbors to avoid collisions.
+   * @param {Boid[]} neighbours - An array of neighboring boids.
+   * @returns {p5.Vector} - A separation vector to avoid collisions.
+   */
   separate(neighbours) {
     const neighboursWithinCollisionRange = neighbours.filter((boid) => {
       const distance = p5.Vector.dist(this.position, boid.position);
@@ -65,6 +94,11 @@ class Boid {
     return p5.Vector.mult(aggregatedPositions, this.SEPARATION_WEIGHT);
   }
 
+  /**
+   * Aligns the boid's velocity with its neighbors' average velocity.
+   * @param {Boid[]} neighbours - An array of neighboring boids.
+   * @returns {p5.Vector} - A steering vector for alignment.
+   */
   align(neighbours) {
     const aggregatedVelocity = neighbours.reduce((acc, boid) => {
       return p5.Vector.add(acc, boid.velocity);
@@ -79,6 +113,11 @@ class Boid {
     return p5.Vector.mult(steering, this.ALIGNMENT_WEIGHT);
   }
 
+  /**
+   * Moves the boid closer to the center of mass of its neighbors.
+   * @param {Boid[]} neighbours - An array of neighboring boids.
+   * @returns {p5.Vector} - A steering vector for cohesion.
+   */
   cohere(neighbours) {
     const aggregatedPositions = neighbours.reduce((acc, boid) => {
       return p5.Vector.add(acc, boid.position);
@@ -94,6 +133,10 @@ class Boid {
   }
 
   // Boundary detection
+  /**
+   * Checks for boundaries and adjusts boid's velocity if it reaches them.
+   * @returns {void}
+   */
   avoidBoundary() {
     if (this.x <= 0) {
       this.velocity.x = 0.2;
@@ -109,6 +152,10 @@ class Boid {
   }
 
   // Boilerplate
+  /**
+   * Updates the boid's position, velocity, and checks for boundary avoidance.
+   * @returns {void}
+   */
   update() {
     this.velocity.add(this.acceleration);
     this.velocity.limit(this.MAX_SPEED);
@@ -117,16 +164,28 @@ class Boid {
     this.avoidBoundary();
   }
 
+  /**
+   * Displays the boid on the canvas.
+   * @returns {void}
+   */
   show() {
     fill(...this.MINT_GREEN);
     ellipse(this.x, this.y, this.RADIUS);
   }
 
   // Getters/Setters
+  /**
+   * Gets the x-coordinate of the boid's position.
+   * @returns {number} - The x-coordinate of the boid's position.
+   */
   get x() {
     return this.position.x;
   }
 
+  /**
+   * Gets the y-coordinate of the boid's position.
+   * @returns {number} - The y-coordinate of the boid's position.
+   */
   get y() {
     return this.position.y;
   }
